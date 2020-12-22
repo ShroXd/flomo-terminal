@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "ESNext",
+    "module": "es2015",
     "sourceMap": false,
-    "declaration": false,
+    "declaration": true,
     "outDir": "./dist",
+    "declarationDir": "./dist/types",
     "moduleResolution": "Node",
+    "rootDir": ".",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "removeComments": false,
@@ -13,5 +15,7 @@
     "strict": true,
     "lib": ["ES6", "DOM"]
   },
-  "include": ["src"]
+  "include": ["./src"],
+  "exclude": ["node_modules"],
+  "noImplicitAny": false
 }
