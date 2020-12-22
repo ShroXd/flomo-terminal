@@ -22,20 +22,18 @@ export async function send() {
 }
 
 export async function fetchAPI(value?: any, isShow?: boolean) {
-  const conf: any = await readConfig()
-  if (conf) {
-    if (isShow) {
-      print(conf.api || '未设定', 'info')
-    }
-    return conf.api
+  if (value && value.length !== 0) {
+    writeConfig('api', value[0])
+    return value
+  }
+
+  const config: any = await readConfig()
+  if (config) {
+    if (isShow) print(config.api, 'info')
+    return config.api
   } else {
-    if (value && value.length !== 0) {
-      writeConfig('api', value[0])
-      return value
-    } else {
-      const message = await inquirer.prompt(apiPrompt)
-      writeConfig('api', message.api)
-      return message.api
-    }
+    const message = await inquirer.prompt(apiPrompt)
+    writeConfig('api', message.api)
+    return message.api
   }
 }
