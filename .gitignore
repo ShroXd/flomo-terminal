@@ -1,0 +1,10 @@
+.idea
+.vscode
+.vs
+.VSCodeCounter
+node_modules
+/lib
+/dist
+coverage
+package-lock.json
+*.log

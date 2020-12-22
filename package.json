@@ -1,0 +1,53 @@
+{
+  "name": "flomo-terminal",
+  "version": "0.0.1",
+  "description": "terminal program for flomo",
+  "main": "lib/bundle.umd.js",
+  "module": "lib/bundle.esm.js",
+  "typings": "lib/types/index.d.ts",
+  "scripts": {
+    "test": "jest --config jest.config.js --coverage --verbose -u",
+    "build": "rollup -c",
+    "dev": "rollup -c rollup.config.js -w",
+    "lint": "tslint -p tsconfig.json",
+    "format": "prettier --write --config .prettierrc src/*.ts",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "keywords": [
+   "flomo",
+   "terminal" 
+  ],
+  "author": "shroxd <shroxdf@gmail.com> (https://www.bebopser.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@types/jest": "^26.0.14",
+    "jest": "^26.5.3",
+    "prettier": "^2.1.2",
+    "rollup": "^2.32.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript": "^1.0.1",
+    "rollup-plugin-typescript2": "^0.28.0",
+    "ts-jest": "^26.4.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShroXd/flomo-terminal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ShroXd/flomo-terminal/issues"
+  },
+  "homepage": "https://github.com/ShroXd/flomo-terminal#readme"
+}
