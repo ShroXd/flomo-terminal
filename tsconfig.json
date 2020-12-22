@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module":"es2015",
-    "lib": ["es2015", "es2016", "es2017", "dom"],
-    "sourceMap": true,
-    "declaration": true,
-    "allowSyntheticDefaultImports": true,
-    "declarationDir": "lib/types",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "target": "ES6",
+    "module": "ESNext",
+    "sourceMap": false,
+    "declaration": false,
+    "outDir": "./dist",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "removeComments": false,
+    "importHelpers": true,
+    "strict": true,
+    "lib": ["ES6", "DOM"]
   },
-  "include": ["./src"],
-  "exclude": ["node_modules"],
-  "noImplicitAny": false
+  "include": ["src"]
 }

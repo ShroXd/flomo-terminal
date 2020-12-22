@@ -1,32 +1,35 @@
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import typescript from "rollup-plugin-typescript2";
-import sourceMaps from "rollup-plugin-sourcemaps";
+import typescript from 'typescript'
+import json from '@rollup/plugin-json'
 import { terser } from 'rollup-plugin-terser'
+import typescript2 from 'rollup-plugin-typescript2'
+
+import { dependencies } from './package.json'
+
+const external = Object.keys(dependencies || '')
+const globals = external.reduce((prev, current) => {
+  const newPrev = prev
+
+  newPrev[current] = current
+  return newPrev
+}, {})
 
 export default {
-    input: "./src/index.ts",
-    output: [
-        {
-            format: "umd",
-            file: "lib/bundle.umd.js",
-            name: "throttle-debounce-ts",
-            sourcemap: true
-        },
-        {
-            format: "es",
-            file: "lib/bundle.esm.js",
-            sourcemap: true
-        }
-    ],
-    plugins: [
-        resolve(),
-        commonjs(),
-        typescript({
-            useTsconfigDeclarationDir: true
-        }),
-        sourceMaps(),
-        terser()
-    ],
-    external: []
-};
+  input: './src/index.ts',
+  output: {
+    file: './dist/index.js',
+    format: 'cjs',
+    banner: '#!/usr/bin/env node',
+    globals
+  },
+  external,
+  plugins: [
+    typescript2({
+      exclude: 'node_modules/**',
+      useTsconfigDeclarationDir: true,
+      typescript,
+      tsconfig: './tsconfig.json'
+    }),
+    json(),
+    terser()
+  ]
+}

@@ -20,6 +20,9 @@
   "files": [
     "lib/**/*"
   ],
+  "bin": {
+    "flomo": "dist/index.js"
+  },
   "keywords": [
     "flomo",
     "terminal"
@@ -27,18 +30,17 @@
   "author": "shroxd <shroxdf@gmail.com> (https://www.bebopser.com)",
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/jest": "^26.0.14",
     "husky": "^4.3.6",
     "jest": "^26.5.3",
     "lint-staged": "^10.5.3",
     "prettier": "^2.1.2",
     "rollup": "^2.32.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-typescript2": "^0.28.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "ts-jest": "^26.4.1",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
@@ -62,5 +64,10 @@
   "bugs": {
     "url": "https://github.com/ShroXd/flomo-terminal/issues"
   },
-  "homepage": "https://github.com/ShroXd/flomo-terminal#readme"
+  "homepage": "https://github.com/ShroXd/flomo-terminal#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "commander": "^6.2.1",
+    "inquirer": "^7.3.3"
+  }
 }
