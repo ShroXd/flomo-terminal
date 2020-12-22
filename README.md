@@ -25,17 +25,27 @@ flomo api xxxxxxxxxx
 flomo send
 ```
 
+4. 升级
+
+```
+npm update -g flomo-terminal
+```
+
 ## API
 
-### flomo send
+- flomo
+
+查看帮助界面
+
+- flomo send
 
 使用交互界面记录你的灵感
 
-### flomo api
+- flomo api
 
 获取当前 api
 
-### flomo api xxxxxxxx
+- flomo api xxxxxxxx
 
 配置新 api
 
