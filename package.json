@@ -1,6 +1,6 @@
 {
   "name": "flomo-terminal",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "terminal program for flomo",
   "main": "lib/bundle.umd.js",
   "module": "lib/bundle.esm.js",
