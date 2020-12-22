@@ -1,8 +1,8 @@
-type messageType = 'success' | 'warning' | 'danger' | 'info'
+type messageType = 'success' | 'warning' | 'error' | 'info'
 enum messageColor {
   'success' = '\x1b[32m',
   'warning' = '\x1b[33m',
-  'danger' = '\x1b[31m',
+  'error' = '\x1b[31m',
   'info' = '\x1b[37m',
 }
 const needValue = (s: string) => s.length > 0 || '内容不能为空！'

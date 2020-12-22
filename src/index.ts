@@ -15,7 +15,7 @@ program
   .command('api')
   .description('设置 / 查看 API')
   .action((cmd: any) => {
-    fetchAPI(cmd.args)
+    fetchAPI(cmd.args, true)
   })
 
 try {

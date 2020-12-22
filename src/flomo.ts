@@ -7,21 +7,29 @@ export async function send() {
   const API = await fetchAPI()
 
   const message = await inquirer.prompt(contentPrompt)
-  const res = await net.post(API, {
-    params: {
-      content: message.content,
-    },
-  })
-  print(res.data.message, 'success')
+
+  try {
+    const res = await net.post(
+      API,
+      JSON.stringify({
+        content: message.content,
+      })
+    )
+    print(res?.data.message, 'success')
+  } catch (err) {
+    print(err, 'error')
+  }
 }
 
-export async function fetchAPI(value?: any) {
-  const conf = await readConfig()
+export async function fetchAPI(value?: any, isShow?: boolean) {
+  const conf: any = await readConfig()
   if (conf) {
-    print((conf as any)?.api || '未设定', 'info')
-    return conf
+    if (isShow) {
+      print(conf.api || '未设定', 'info')
+    }
+    return conf.api
   } else {
-    if (value?.length !== 0) {
+    if (value && value.length !== 0) {
       writeConfig('api', value[0])
       return value
     } else {
