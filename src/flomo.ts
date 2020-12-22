@@ -1,22 +1,33 @@
 import inquirer from 'inquirer'
+import { readConfig, writeConfig } from './db'
+import { apiPrompt, contentPrompt, print } from './helper'
 import { net } from './network'
 
 export async function send() {
-  const info = [
-    {
-      type: 'input',
-      name: 'content',
-      message: '现在的想法是: ',
-      validate: (content: string) => content.length > 0 || '内容不能为空！',
-    },
-  ]
+  const API = await fetchAPI()
 
-  const message = await inquirer.prompt(info)
-  const res = await net.post('/', {
+  const message = await inquirer.prompt(contentPrompt)
+  const res = await net.post(API, {
     params: {
       content: message.content,
     },
   })
-  // tslint:disable-next-line: no-console
-  console.info(res.data.message)
+  print(res.data.message, 'success')
+}
+
+export async function fetchAPI(value?: any) {
+  const conf = await readConfig()
+  if (conf) {
+    print((conf as any)?.api || '未设定', 'info')
+    return conf
+  } else {
+    if (value?.length !== 0) {
+      writeConfig('api', value[0])
+      return value
+    } else {
+      const message = await inquirer.prompt(apiPrompt)
+      writeConfig('api', message.api)
+      return message.api
+    }
+  }
 }
