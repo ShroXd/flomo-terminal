@@ -33,6 +33,6 @@ export async function writeConfig(key: string, value?: string) {
       [key]: value || '',
     })
   } else {
-    db.update(oldData[0], { $set: { [key]: value || '' } })
+    db.update({ [key]: oldData[0][key] }, { $set: { [key]: value || '' } })
   }
 }
