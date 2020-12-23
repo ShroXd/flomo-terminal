@@ -11,7 +11,7 @@ export const contentPrompt = [
   {
     type: 'input',
     name: 'content',
-    message: '现在的想法是：',
+    message: '现在的想法是：\n\n  ',
     validate: needValue,
   },
 ]
