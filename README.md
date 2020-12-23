@@ -49,6 +49,10 @@ npm update -g flomo-terminal
 
 配置新 api
 
+4. flomo edit
+
+切换编辑信息方式
+
 ## TODO
 
 1. 完善测试
