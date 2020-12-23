@@ -33,19 +33,19 @@ npm update -g flomo-terminal
 
 ## API
 
-- flomo
+1. flomo
 
 查看帮助界面
 
-- flomo send
+2. flomo send
 
 使用交互界面记录你的灵感
 
-- flomo api
+3. flomo api
 
 获取当前 api
 
-- flomo api xxxxxxxx
+4. flomo api xxxxxxxx
 
 配置新 api
 
