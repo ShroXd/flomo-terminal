@@ -19,14 +19,20 @@ export const getConfigIns = () => {
   return configIns
 }
 
-export async function readConfig() {
+export async function readConfig(key: string) {
   const db = getConfigIns()
-  return db.findOne({})
+  return db.find({ [key]: { $exists: true } })
 }
 
-export function writeConfig(key: string, value?: string) {
+export async function writeConfig(key: string, value?: string) {
   const db = getConfigIns()
-  db.insert({
-    [key]: value || '',
-  })
+  const oldData: any = await db.find({ [key]: { $exists: true } })
+
+  if (oldData.length === 0) {
+    db.insert({
+      [key]: value || '',
+    })
+  } else {
+    db.update(oldData[0], { $set: { [key]: value || '' } })
+  }
 }

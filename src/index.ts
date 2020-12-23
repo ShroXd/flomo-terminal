@@ -1,6 +1,6 @@
 import { Command } from 'commander'
 import pkg from '../package.json'
-import { fetchAPI, send } from './flomo'
+import { changeEditor, fetchAPI, send } from './flomo'
 
 const program = new Command(pkg.name)
 
@@ -16,6 +16,13 @@ program
   .description('设置 / 查看 API')
   .action((cmd: any) => {
     fetchAPI(cmd.args, true)
+  })
+
+program
+  .command('edit')
+  .description('切换编辑信息方式')
+  .action(() => {
+    changeEditor()
   })
 
 try {
